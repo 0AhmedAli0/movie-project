@@ -1,0 +1,130 @@
+<div class="row mt-5 py-4">
+  <div class="col-md-3 position-relative">
+    <img class="w-100" [src]="imagePrefix + seriesDetails.poster_path" alt="" />
+    <div class="vote p-2 fw-bolder position-absolute top-0 bg-lights">
+      {{ seriesDetails.vote_average }}
+    </div>
+  </div>
+  <div class="col-md-9">
+    <h2 class="fw-bolder">{{ seriesDetails.name }}</h2>
+    <h3 class="h5 mt-3">StoryLine</h3>
+    <p class="fs-6 my-2 text-light-emphasis p-2">
+      {{ seriesDetails.overview }}
+    </p>
+    <div class="genral">
+      <h6 class="p-0 m-0">First Air Date</h6>
+      <p class="p-0 m-0 ps-3">
+        {{ seriesDetails.first_air_date }}
+      </p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Last Air Date</h6>
+      <p class="p-0 m-0 ps-3">
+        {{ seriesDetails.last_air_date }}
+      </p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Seasons</h6>
+      <p class="p-0 m-0 ps-3">{{ seriesDetails.number_of_seasons }}</p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Episodes</h6>
+      <p class="p-0 m-0 ps-3">
+        {{ seriesDetails.number_of_episodes }}
+      </p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">status</h6>
+      <p class="p-0 m-0 ps-3">
+        {{ seriesDetails.status }}
+      </p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Genres</h6>
+      <ul class="p-0 m-0 ps-3">
+        <li class="me-1" *ngFor="let x of seriesDetails.genres">
+          {{ x.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Language</h6>
+      <p class="p-0 m-0 ps-3">{{ seriesDetails.spoken_languages[0].name }}</p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Production</h6>
+      <p
+        class="p-0 m-0 ps-3"
+        *ngFor="let x of seriesDetails.production_companies"
+      >
+        {{ x.name }}
+      </p>
+    </div>
+    <div class="genral">
+      <h6 class="p-0 m-0">Networks</h6>
+      <p class="p-0 m-0 ps-3" *ngFor="let x of seriesDetails.networks">
+        {{ x.name }}
+      </p>
+    </div>
+  </div>
+</div>
+<!--  -->
+<div class="trailer-video"></div>
+<!--  -->
+<div class="slider mt-3">
+  <h3>seasons</h3>
+  <button (click)="slideButtonPre(0)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(0)" class="slider-content">
+    <div *ngFor="let result of seriesDetails.seasons" class="link-container">
+      <a [routerLink]="['SeasonDetails', result.season_number]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(0)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
+<div class="slider mt-3">
+  <h3>Cast</h3>
+  <button (click)="slideButtonPre(1)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(1)" class="slider-content">
+    <div *ngFor="let result of seriescast" class="link-container">
+      <a [routerLink]="['/PersonDetails', result.id]">
+        <img [src]="imagePrefix + result.profile_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(1)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
+<div class="slider mt-3">
+  <h3>More Like This</h3>
+  <button (click)="slideButtonPre(2)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(2)" class="slider-content">
+    <div *ngFor="let result of seriesSimilar" class="link-container">
+      <a [routerLink]="['/tvdetails', result.id]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(2)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>

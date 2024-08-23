@@ -1,0 +1,59 @@
+<h2 class="text-center">Login Now</h2>
+<h6 *ngIf="loginError" class="alert alert-danger">{{ loginError }}</h6>
+<form action="" (ngSubmit)="submitlogin(loginForm)" [formGroup]="loginForm">
+  <label for="email" class="form-label mt-3">Email</label>
+  <input
+    type="email"
+    name=""
+    formControlName="email"
+    class="form-control"
+    id="email"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+  >
+    <p
+      class="mb-0"
+      *ngIf="
+    loginForm.get('email')?.errors?.['required']"
+    >
+      Email Is Required
+    </p>
+    <p
+      class="mb-0"
+      *ngIf="
+    loginForm.get('email')?.errors?.['email']"
+    >
+      Email Invalid
+    </p>
+  </div>
+  <label for="password" class="form-label mt-3">Password</label>
+  <input
+    type="password"
+    name=""
+    formControlName="password"
+    class="form-control"
+    id="password"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="
+      loginForm.get('password')?.errors && loginForm.get('password')?.touched
+    "
+  >
+    <p *ngIf="loginForm.get('password')?.errors?.['required']" class="mb-0">
+      Password Is Required
+    </p>
+    <p *ngIf="loginForm.get('password')?.errors?.['pattern']" class="mb-0">
+      Password must start with upperCase charecter ...
+    </p>
+  </div>
+  <button
+    [disabled]="loginForm.invalid"
+    type="submit"
+    class="btn btn-primary mt-3"
+  >
+    Submit
+  </button>
+</form>

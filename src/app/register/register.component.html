@@ -1,0 +1,158 @@
+<h2 class="text-center">Register Now</h2>
+<h6 *ngIf="registerError" class="alert alert-danger">{{ registerError }}</h6>
+<form
+  action=""
+  (ngSubmit)="submitRegister(rejistterForm)"
+  [formGroup]="rejistterForm"
+>
+  <label for="firstName" class="form-label mt-3">First Name</label>
+  <input
+    type="text"
+    name=""
+    formControlName="first_name"
+    class="form-control"
+    id="firstName"
+  />
+  <div
+    *ngIf="
+      rejistterForm.get('first_name')?.errors &&
+      rejistterForm.get('first_name')?.touched
+    "
+    class="alert alert-danger my-2"
+  >
+    <p
+      *ngIf="rejistterForm.get('first_name')?.errors?.['required']"
+      class="mb-0"
+    >
+      First Name Is Required
+    </p>
+    <p
+      *ngIf="rejistterForm.get('first_name')?.errors?.['minlength']"
+      class="mb-0"
+    >
+      First Name MinLength Is 3
+    </p>
+    <p
+      *ngIf="rejistterForm.get('first_name')?.errors?.['maxlength']"
+      class="mb-0"
+    >
+      First Name MaxLength Is 8
+    </p>
+  </div>
+  <label for="LastName" class="form-label mt-3">Last Name</label>
+  <input
+    type="text"
+    name=""
+    formControlName="last_name"
+    class="form-control"
+    id="LastName"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="
+      rejistterForm.get('last_name')?.errors &&
+      rejistterForm.get('last_name')?.touched
+    "
+  >
+    <p
+      class="mb-0"
+      *ngIf="rejistterForm.get('last_name')?.errors?.['required']"
+    >
+      Last Name Is Required
+    </p>
+    <p
+      class="mb-0"
+      *ngIf="rejistterForm.get('last_name')?.errors?.['minlength']"
+    >
+      Last Name MinLength Is 3
+    </p>
+    <p
+      class="mb-0"
+      *ngIf="rejistterForm.get('last_name')?.errors?.['maxlength']"
+    >
+      Last Name MaxLength Is 8
+    </p>
+  </div>
+  <label for="age" class="form-label mt-3">Age</label>
+  <input
+    type="number"
+    name=""
+    formControlName="age"
+    class="form-control"
+    id="age"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="
+      rejistterForm.get('age')?.errors && rejistterForm.get('age')?.touched
+    "
+  >
+    <p class="mb-0" *ngIf="rejistterForm.get('age')?.errors?.['required']">
+      Age Is Required
+    </p>
+    <p class="mb-0" *ngIf="rejistterForm.get('age')?.errors?.['min']">
+      Age MinValue Is 16
+    </p>
+    <p class="mb-0" *ngIf="rejistterForm.get('age')?.errors?.['max']">
+      Age MaxValue Is 80
+    </p>
+  </div>
+  <label for="email" class="form-label mt-3">Email</label>
+  <input
+    type="email"
+    name=""
+    formControlName="email"
+    class="form-control"
+    id="email"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="
+      rejistterForm.get('email')?.errors && rejistterForm.get('email')?.touched
+    "
+  >
+    <p
+      class="mb-0"
+      *ngIf="
+    rejistterForm.get('email')?.errors?.['required']"
+    >
+      Email Is Required
+    </p>
+    <p
+      class="mb-0"
+      *ngIf="
+    rejistterForm.get('email')?.errors?.['email']"
+    >
+      Email Invalid
+    </p>
+  </div>
+  <label for="password" class="form-label mt-3">Password</label>
+  <input
+    type="password"
+    name=""
+    formControlName="password"
+    class="form-control"
+    id="password"
+  />
+  <div
+    class="alert alert-danger my-2"
+    *ngIf="
+      rejistterForm.get('password')?.errors &&
+      rejistterForm.get('password')?.touched
+    "
+  >
+    <p *ngIf="rejistterForm.get('password')?.errors?.['required']" class="mb-0">
+      Password Is Required
+    </p>
+    <p *ngIf="rejistterForm.get('password')?.errors?.['pattern']" class="mb-0">
+      Password must start with upperCase charecter ...
+    </p>
+  </div>
+  <button
+    [disabled]="rejistterForm.invalid"
+    type="submit"
+    class="btn btn-primary mt-3"
+  >
+    Submit
+  </button>
+</form>

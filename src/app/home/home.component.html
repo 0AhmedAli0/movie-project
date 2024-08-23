@@ -1,0 +1,119 @@
+<div class="slider">
+  <div class="bg-slider"></div>
+  <h2 class="fw-bolder">OUR UPCOMING MOVIES</h2>
+  <div class="slider-content">
+    <button (click)="slideButtonPre()" id="prev-slide" class="slide-button">
+      <i class="fa-solid fa-angle-left"></i>
+    </button>
+    <div (scroll)="handelSlideButtom()" class="imags-container">
+      <div *ngFor="let reslut of upComing" class="img-container">
+        <a
+          class="link-light link-underline-opacity-0"
+          [routerLink]="['/moviedetails', reslut.id]"
+        >
+          <img class="w-100" [src]="imagePrefix + reslut.poster_path" alt="" />
+          <div
+            class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights"
+          >
+            {{ reslut.vote_average }}
+          </div>
+        </a>
+      </div>
+    </div>
+    <button id="next-slide" (click)="slideButtonNex()" class="slide-button">
+      <i class="fa-solid fa-angle-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- /////////////////////// -->
+<div class="row text-center py-4">
+  <div class="trending col-sm-6 col-lg-4 py-4">
+    <div class="border-y w-25 my-4"></div>
+    <h2>
+      Trending <br />
+      Movies <br />To Watch Now
+    </h2>
+    <p class="fs-6 my-4 text-light-emphasis">Most watched movies by days</p>
+    <div class="border-y my-3"></div>
+  </div>
+  <div *ngFor="let movie of trendingmovie" class="col-sm-6 col-md-3 col-lg-2">
+    <div class="movie position-relative">
+      <a
+        class="link-light link-underline-opacity-0"
+        [routerLink]="['/moviedetails', movie.id]"
+      >
+        <img
+          [src]="imagePrefix + movie.poster_path"
+          class="w-100 img-fluid"
+          alt=""
+        />
+        <h3 class="h5 mb-3 text-center">{{ movie.title }}</h3>
+        <div
+          class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights"
+        >
+          {{ movie.vote_average }}
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- /////////////////////// -->
+<div class="row py-4">
+  <div class="trending col-sm-6 col-lg-4 py-4">
+    <div class="border-y w-25 my-4"></div>
+    <h2>
+      Trending <br />
+      Tv <br />To Watch Now
+    </h2>
+    <p class="fs-6 my-4 text-light-emphasis">Most watched Tv by days</p>
+    <div class="border-y my-3"></div>
+  </div>
+  <div *ngFor="let movie of trendingTv" class="col-sm-6 col-md-3 col-lg-2">
+    <a
+      class="link-light link-underline-opacity-0"
+      [routerLink]="['/tvdetails', movie.id]"
+    >
+      <div class="movie position-relative">
+        <img
+          [src]="imagePrefix + movie.poster_path"
+          class="w-100 img-fluid"
+          alt=""
+        />
+        <h3 class="h5 mb-3 text-center">{{ movie.name }}</h3>
+        <div
+          class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights"
+        >
+          {{ movie.vote_average }}
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- /////////////////////// -->
+<div class="row py-4">
+  <div class="trending col-sm-6 col-lg-4 py-4">
+    <div class="border-y w-25 my-4"></div>
+    <h2>
+      Trending <br />
+      People <br />To Watch Now
+    </h2>
+    <p class="fs-6 my-4 text-light-emphasis">Most watched People by days</p>
+    <div class="border-y my-3"></div>
+  </div>
+  <div *ngFor="let person of trendingPeople" class="col-sm-6 col-md-3 col-lg-2">
+    <a
+      class="link-light link-underline-opacity-0"
+      [routerLink]="['/PersonDetails', person.id]"
+    >
+      <div class="movie position-relative">
+        <img
+          [src]="imagePrefix + person.profile_path"
+          class="w-100 img-fluid"
+          alt=""
+        />
+        <h3 class="h5 mb-3 text-center">{{ person.name }}</h3>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="pd mt-5 pt-5">
+  <img
+    class="pd-img"
+    [src]="imagePrefix + personeDetailes.profile_path"
+    alt=""
+  />
+  <div>
+    <h2 class="fw-bolder">{{ personeDetailes.name }}</h2>
+    <p class="fs-6 my-2 text-light p-2">{{ personeDetailes.biography }}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="known">
+    <h3 (click)="movieclick()" class="category active movie">MOVIES</h3>
+    <h3 (click)="tvclick()" class="category tv">TV</h3>
+  </div>
+  <div class="row alltv hidden">
+    <div *ngFor="let movie of personetv" class="col-sm-6 col-md-3 col-lg-2">
+      <div class="movie position-relative">
+        <a
+          class="link-light link-underline-opacity-0"
+          [routerLink]="['/tvdetails', movie.id]"
+        >
+          <img
+            [src]="imagePrefix + movie.poster_path"
+            class="w-100 img-fluid"
+            alt=""
+          />
+          <h3 class="h5 mb-3 text-center">{{ movie.title }}</h3>
+          <div
+            class="vote p-2 fw-bolder position-absolute top-0 end-0 bg-lights"
+          >
+            {{ movie.vote_average }}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row allmovies">
+    <div *ngFor="let movie of personeMovies" class="col-sm-6 col-md-3 col-lg-2">
+      <div class="movie position-relative">
+        <a
+          class="link-light link-underline-opacity-0"
+          [routerLink]="['/moviedetails', movie.id]"
+        >
+          <img
+            [src]="imagePrefix + movie.poster_path"
+            class="w-100 img-fluid"
+            alt=""
+          />
+          <h3 class="h5 mb-3 text-center">{{ movie.title }}</h3>
+          <div
+            class="vote p-2 fw-bolder position-absolute top-0 end-0 bg-lights"
+          >
+            {{ movie.vote_average }}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<nav class="navbar fixed-top navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Noxy</a>
+    <button
+      class="navbar-toggler text-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNavAltMarkup"
+    >
+      <div *ngIf="isLogin" class="navbar-nav me-auto">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          >Home</a
+        >
+
+        <a class="nav-link" routerLink="/movies" routerLinkActive="active"
+          >Movies</a
+        >
+        <a class="nav-link" routerLink="/tv" routerLinkActive="active">Tv</a>
+      </div>
+      <div class="left">
+        <form role="search">
+          <input
+            (keyup)="goToSearch($event)"
+            class="form-control me-2 search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+        <a
+          *ngIf="!isLogin"
+          class="nav-link px-2"
+          routerLink="/login"
+          routerLinkActive="active"
+          >Login</a
+        >
+        <a
+          *ngIf="!isLogin"
+          class="nav-link px-2"
+          routerLink="/register"
+          routerLinkActive="active"
+          >Register</a
+        >
+        <div *ngIf="isLogin" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/profile">Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/settings/saved">Saved</a>
+            </li>
+            <li>
+              <a
+                (click)="callLogout()"
+                *ngIf="isLogin"
+                class="dropdown-item"
+                style="cursor: pointer"
+                >LogOut</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

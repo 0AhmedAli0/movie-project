@@ -1,0 +1,60 @@
+<div class="slider mt-5 pt-5">
+  <h3>Now Playing Movies</h3>
+  <button (click)="slideButtonPre(0)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(0)" class="slider-content">
+    <div *ngFor="let result of airing_today" class="link-container">
+      <a [routerLink]="['/tvdetails', result.id]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(0)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
+<div class="slider pt-5">
+  <h3>Top Rated Movies</h3>
+  <button (click)="slideButtonPre(1)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(1)" class="slider-content">
+    <div *ngFor="let result of top_rated" class="link-container">
+      <a [routerLink]="['/tvdetails', result.id]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(1)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
+<div class="slider pt-5">
+  <h3>Popular Movies</h3>
+  <button (click)="slideButtonPre(2)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(2)" class="slider-content">
+    <div *ngFor="let result of popular" class="link-container">
+      <a [routerLink]="['/tvdetails', result.id]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(2)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>

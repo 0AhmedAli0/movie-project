@@ -1,0 +1,61 @@
+.pd-img {
+  width: 100%;
+}
+.known {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.category {
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.category.movie {
+  margin-right: 10px;
+}
+.category.tv {
+  margin-left: 10px;
+}
+.category.active {
+  border-color: chartreuse;
+  color: chartreuse;
+}
+.hidden {
+  display: none !important;
+}
+@media (min-width: 576px) {
+  .pd {
+    min-height: 600px;
+  }
+  .pd-img {
+    float: left;
+    width: 35%;
+    margin-right: 15px;
+    max-height: 550px;
+  }
+  .row .movie img {
+    height: 300px;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .row .movie img {
+    height: 275px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .row .movie img {
+    height: 250px;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .row .movie img {
+    height: 300px;
+  }
+}

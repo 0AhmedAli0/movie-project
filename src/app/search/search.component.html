@@ -1,0 +1,43 @@
+<div class="row mt-5 py-4">
+  <div *ngFor="let result of searchResults" class="col-md-2">
+    <div class="movie position-relative">
+      <a
+        *ngIf="result.poster_path; else reblace"
+        class="link-light link-underline-opacity-0"
+        [routerLink]="['/' + result.media_type + 'details', result.id]"
+      >
+        <img
+          [src]="imagePrefix + result.poster_path"
+          class="w-100 img-fluid"
+          alt=""
+        />
+        <h3 *ngIf="result.title" class="h5 mb-3 text-center">
+          {{ result.title }}
+        </h3>
+        <h3 *ngIf="result.name" class="h5 mb-3 text-center">
+          {{ result.name }}
+        </h3>
+        <div
+          class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights"
+        >
+          {{ result.vote_average }}
+        </div>
+      </a>
+      <ng-template #reblace>
+        <a
+          class="link-light link-underline-opacity-0"
+          [routerLink]="['/PersonDetails', result.id]"
+        >
+          <img
+            [src]="imagePrefix + result.profile_path"
+            class="w-100 img-fluid"
+            alt=""
+          />
+          <h3 class="h5 mb-3 text-center">
+            {{ result.name }}
+          </h3>
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</div>

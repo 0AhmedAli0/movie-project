@@ -1,0 +1,88 @@
+<div class="description">
+  <div
+    class="backdrob-img"
+    [style.background-image]="
+      'url(' + imagePrefix + seriesDetails.backdrop_path + ')'
+    "
+  ></div>
+  <div class="details">
+    <h2 class="h4">{{ seriesDetails.name }}</h2>
+    <div class="reviews">
+      <div class="vote star">
+        <div
+          [style.width]="seriesDetails.vote_average * 10 + '%'"
+          class="star-fill"
+        ></div>
+      </div>
+      <p class="vote">{{ seriesDetails.vote_count }}Vote</p>
+      <p class="vote">Season {{ SeasonDetails.episodes[0].season_number }}</p>
+      <p class="vote">{{ SeasonDetails.air_date }}</p>
+      <p class="vote">
+        NEt:
+        <span class="p-0 m-0 ps-3" *ngFor="let x of seriesDetails.networks">
+          {{ x.name }}
+        </span>
+      </p>
+    </div>
+    <h3 class="h5">StoryLine</h3>
+    <p class="fs-6 text-light p-2">
+      {{ seriesDetails.overview }}
+    </p>
+  </div>
+</div>
+
+<div class="Episodes">
+  <h3 class="category">EPISODES</h3>
+  <div class="row">
+    <div
+      *ngFor="let Episode of SeasonDetails.episodes"
+      class="es-fl col-sm-6 col-md-4 col-lg-3"
+    >
+      <div class="movie">
+        <a class="link-light link-underline-opacity-0">
+          <img
+            [src]="imagePrefix + Episode.still_path"
+            class="w-100 img-fluid"
+            alt=""
+          />
+          <h4 class="Episode-name h6 my-2">
+            <span>E{{ Episode.episode_number }}</span
+            >{{ Episode.name }}
+          </h4>
+          <div
+            class="vote p-1 fw-bolder position-absolute top-0 end-0 bg-lights"
+          >
+            {{ Episode.vote_average }}
+          </div>
+          <div class="eps-overview">
+            {{ Episode.overview }}
+          </div>
+        </a>
+      </div>
+      <div class="eps-date">
+        {{ Episode.air_date }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slider mt-3">
+  <h3>More Like This</h3>
+  <button (click)="slideButtonPre(0)" id="prev-slide" class="slide-button">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <div (scroll)="handelSlideButtom(0)" class="slider-content">
+    <div *ngFor="let result of seriesSimilar" class="link-container">
+      <a [routerLink]="['/tvdetails', result.id]">
+        <img [src]="imagePrefix + result.poster_path" alt="" />
+        <h4>{{ result.name }}</h4>
+      </a>
+      <div class="vote p-2 fw-bolder position-absolute top-0 start-0 bg-lights">
+        {{ result.vote_average }}
+      </div>
+    </div>
+  </div>
+  <button id="next-slide" (click)="slideButtonNex(0)" class="slide-button">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+</div>
