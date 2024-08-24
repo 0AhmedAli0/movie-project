@@ -1,5 +1,3 @@
-# movie-project
-
 # AngularMovieApplication
 
 Welcome to AngularMovieApplicatin! is a simple web app that consumes The Movie DB API, it can show you interesting data about popular movies and series and enables users to discover movie and TV show trailers.The project is built with [Angular CLI](https://github.com/angular/angular-cli) version 18.
